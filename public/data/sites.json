@@ -1,0 +1,165 @@
+{
+  "total": 10,
+  "sites": [
+    {
+      "id": "plat-hogangnono",
+      "name": "호갱노노 (Hogangnono)",
+      "handle": "@hogangnono",
+      "url": "https://hogangnono.com",
+      "category": "실거래·입지·학군 분석",
+      "region": "필수 앱 1위",
+      "description": "아파트 실거래가 추이, 3D 일조량 시뮬레이션, 초등학교 배정 학군, 학원가 분포, 입주민 생생 이야기까지 제공하는 국민 아파트 분석 플랫폼.",
+      "coverImage": "./images/apt/apt-onebailey-1.jpg",
+      "tags": [
+        "실거래가",
+        "일조량3D",
+        "학군지도",
+        "입주민리뷰"
+      ]
+    },
+    {
+      "id": "plat-naverland",
+      "name": "네이버페이 부동산 (Naver Land)",
+      "handle": "@naver_land",
+      "url": "https://new.land.naver.com",
+      "category": "실시간 매물·평면도",
+      "region": "국내 최대 매물DB",
+      "description": "서울 전 단지 실시간 매매·전세·월세 호가 매물과 평형별 정밀 평면도, 관리비, 세대수, 단지 내 거리뷰를 확인할 수 있는 필수 포털.",
+      "coverImage": "./images/apt/apt-acro-seoul-forest-1.jpg",
+      "tags": [
+        "실시간매물",
+        "평면도",
+        "호가비교",
+        "단지정보"
+      ]
+    },
+    {
+      "id": "plat-asil",
+      "name": "아실 (아파트실거래가 ASIL)",
+      "handle": "@asil_kr",
+      "url": "https://asil.kr",
+      "category": "실거래 비교·빅데이터",
+      "region": "데이터 분석",
+      "description": "서울 자치구별 최고가/최저가 비교, 여러 단지 실거래 그래프 동시 비교, 입주 물량 및 미분양 통계를 한눈에 보여주는 전문 사이트.",
+      "coverImage": "./images/apt/apt-trimage-1.jpg",
+      "tags": [
+        "단지비교",
+        "입주물량",
+        "최고가조회",
+        "갭투자분석"
+      ]
+    },
+    {
+      "id": "plat-molit",
+      "name": "국토교통부 실거래가 공개시스템",
+      "handle": "@rt_molit_go_kr",
+      "url": "https://rt.molit.go.kr",
+      "category": "정부 공식 실거래 원장",
+      "region": "공공 공식 데이터",
+      "description": "대한민국 모든 아파트 매매·전월세 및 분양권·입주권 실거래 신고 내역과 등기 여부를 가장 정확하게 조회하는 정부 공식 포털.",
+      "coverImage": "./images/apt/apt-apgujeong-hyundai-1.jpg",
+      "tags": [
+        "국토부공식",
+        "등기여부확인",
+        "실거래신고",
+        "계약일조회"
+      ]
+    },
+    {
+      "id": "plat-seoulland",
+      "name": "서울부동산정보광장",
+      "handle": "@land_seoul_go_kr",
+      "url": "https://land.seoul.go.kr",
+      "category": "서울시 공식 거래량 통계",
+      "region": "서울특별시 운영",
+      "description": "서울시 25개 자치구별 월별 아파트 매매 거래량, 전월세 거래 건수, 토지거래허가구역 현황을 실시간으로 집계하는 서울시 공식 플랫폼.",
+      "coverImage": "./images/apt/apt-heliocity-1.jpg",
+      "tags": [
+        "서울거래량",
+        "자치구통계",
+        "토지거래허가",
+        "서울시공식"
+      ]
+    },
+    {
+      "id": "plat-cleanup",
+      "name": "서울시 정비사업 정보몽땅",
+      "handle": "@cleanup_seoul",
+      "url": "https://cleanup.seoul.go.kr",
+      "category": "재건축·재개발 추진현황",
+      "region": "서울시 정비사업",
+      "description": "서울 시내 재건축·재개발 조합 설립, 사업시행인가, 관리처분인가 등 정비사업 단계별 진행 현황과 공고문을 투명하게 공개하는 시스템.",
+      "coverImage": "./images/apt/apt-yeouido-sibeom-1.jpg",
+      "tags": [
+        "재건축단계",
+        "재개발조합",
+        "신속통합기획",
+        "정비구역"
+      ]
+    },
+    {
+      "id": "plat-applyhome",
+      "name": "한국부동산원 청약홈 (ApplyHome)",
+      "handle": "@applyhome_co_kr",
+      "url": "https://www.applyhome.co.kr",
+      "category": "신축 분양·무순위 청약",
+      "region": "공식 청약 포털",
+      "description": "서울 강남3구 분양가상한제 로또 청약부터 무순위 줍줍 공고, 청약 가점 계산, 당첨자 조회까지 진행하는 대한민국 공식 아파트 청약 포털.",
+      "coverImage": "./images/apt/apt-olympicpark-foreon-1.jpg",
+      "tags": [
+        "아파트청약",
+        "입주자모집공고",
+        "무순위줍줍",
+        "청약가점"
+      ]
+    },
+    {
+      "id": "plat-ziin",
+      "name": "부동산지인 (Ziin)",
+      "handle": "@aptgin_com",
+      "url": "https://aptgin.com",
+      "category": "시장강도·수요입주 빅데이터",
+      "region": "빅데이터 지표",
+      "description": "지역별 시장강도, 전출입 인구 이동, 미분양 추이, 다차원 아파트 가격 지수를 시각화하여 매수·매도 타이밍 분석을 돕는 플랫폼.",
+      "coverImage": "./images/apt/apt-marp-raemian-prugio-1.jpg",
+      "tags": [
+        "시장강도",
+        "인구전출입",
+        "수요물량",
+        "빅데이터"
+      ]
+    },
+    {
+      "id": "plat-richgo",
+      "name": "리치고 (Richgo)",
+      "handle": "@richgo_ai",
+      "url": "https://m.richgo.ai",
+      "category": "AI 시세예측·호재지도",
+      "region": "AI 프롭테크",
+      "description": "GTX 노선도, 지하철 연장선, 학군 성취도, 재건축 사업성 점수를 지도 위에 직관적으로 겹쳐 볼 수 있는 AI 부동산 분석 서비스.",
+      "coverImage": "./images/apt/apt-cheongnyangni-lottel65-1.jpg",
+      "tags": [
+        "교통호재지도",
+        "GTX노선",
+        "재건축사업성",
+        "AI시세"
+      ]
+    },
+    {
+      "id": "plat-kbland",
+      "name": "KB부동산 (KB Land)",
+      "handle": "@kbland_kr",
+      "url": "https://kbland.kr",
+      "category": "KB시세·주간동향·대출한도",
+      "region": "금융권 표준시세",
+      "description": "은행 주택담보대출의 기준이 되는 KB아파트시세와 주간 매매·전세 가격 증감률, 매수우위지수를 제공하는 금융권 대표 부동산 플랫폼.",
+      "coverImage": "./images/apt/apt-gyeonghuigung-xi-1.jpg",
+      "tags": [
+        "KB시세",
+        "주담대한도",
+        "매수우위지수",
+        "주간시황"
+      ]
+    }
+  ]
+}

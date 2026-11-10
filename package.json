@@ -1,0 +1,19 @@
+{
+  "name": "random-apt-seoul",
+  "version": "1.0.0",
+  "description": "Instagram-style random Seoul apartment explorer, roulette, and real estate archive platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "seoul",
+    "apartment",
+    "real-estate",
+    "instagram",
+    "random",
+    "roulette"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RANDOM.APT — 인스타그램형 서울시 랜덤 아파트 피드 & 임장 룰렛 탐색기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Left Navigation Sidebar (Instagram Web Style) -->
+    <aside class="left-sidebar">
+      <div class="brand-header" id="brandHomeBtn" title="서울 전체 아파트 피드로 이동">
+        <div class="brand-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M15 21V9h4a1 1 0 0 1 1 1v11M9 7h2M9 11h2M9 15h2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">RANDOM.APT</span>
+          <span class="brand-subtitle">SEOUL APARTMENT GRAM</span>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <button class="nav-item active" data-nav="feed">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z"/></svg>
+          <span>서울 단지 피드</span>
+        </button>
+
+        <button class="nav-item highlight-shuffle" id="sidebarShuffleBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+          <span>랜덤 피드 셔플</span>
+          <kbd class="shortcut-badge">R</kbd>
+        </button>
+
+        <button class="nav-item highlight-roulette" id="sidebarRouletteBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/></svg>
+          <span>랜덤 아파트 룰렛 뽑기</span>
+          <kbd class="shortcut-badge">S</kbd>
+        </button>
+
+        <button class="nav-item" data-nav="explore">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>바둑판 탐색 (Explore)</span>
+          <kbd class="shortcut-badge">G</kbd>
+        </button>
+
+        <button class="nav-item" data-nav="sites">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+          <span>부동산 플랫폼 모음</span>
+        </button>
+
+        <button class="nav-item" data-nav="saved">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          <span>관심 단지 보드</span>
+          <span class="badge-count" id="savedCountBadge">0</span>
+        </button>
+
+        <button class="nav-item" data-nav="liked">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span>하트한 아파트</span>
+          <span class="badge-count" id="likedCountBadge">0</span>
+        </button>
+
+        <button class="nav-item" id="openAddModalBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg>
+          <span>나만의 관심 단지 추가</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+          <span id="themeIcon">🌙</span>
+          <span id="themeLabel">라이트 모드로 전환</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Center Main Feed Area -->
+    <main class="main-content">
+      <!-- Top Mobile Header -->
+      <header class="mobile-top-bar">
+        <div class="mobile-brand">🏢 RANDOM.APT SEOUL</div>
+        <div class="mobile-actions">
+          <button class="icon-btn" id="mobileShuffleBtn" title="랜덤 셔플">🎲 셔플</button>
+          <button class="icon-btn" id="mobileRouletteBtn" title="랜덤 단지 뽑기">🎯 단지뽑기</button>
+        </div>
+      </header>
+
+      <!-- Instagram-style Stories Bar (Seoul 7 Regions & Roulette Trigger) -->
+      <section class="stories-container" aria-label="서울시 권역별 스토리 필터">
+        <div class="stories-scroll" id="storiesBar">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </section>
+
+      <!-- Filter & Search Controls Bar -->
+      <section class="controls-bar">
+        <div class="search-row">
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="searchInput" placeholder="단지명(원베일리, 은마, 마래푸), 자치구·동, 지하철역, 학군, 브랜드 검색..." />
+            <button class="clear-search-btn hidden" id="clearSearchBtn" title="검색어 지우기">✕</button>
+          </div>
+
+          <div class="quick-action-group">
+            <button class="action-pill primary-shuffle" id="topShuffleBtn" title="피드 순서 무작위 셔플 (단축키 R)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+              <span>랜덤 셔플</span>
+            </button>
+            <button class="action-pill" id="sortModeBtn" data-mode="random" title="정렬 방식 전환">
+              <span>🎲 랜덤순</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Category Chips -->
+        <div class="category-chips" id="categoryChips">
+          <button class="chip active" data-category="all">서울 전체 단지</button>
+          <button class="chip" data-category="한강뷰/랜드마크">🌊 한강뷰 · 랜드마크</button>
+          <button class="chip" data-category="하이엔드/신축">✨ 하이엔드 · 신축</button>
+          <button class="chip" data-category="재건축/정비사업">🏗️ 재건축 · 정비사업</button>
+          <button class="chip" data-category="초역세권/직주근접">🚇 초역세권 · 직주근접</button>
+          <button class="chip" data-category="명문학군">📚 명문학군 (대치·목동·중계)</button>
+          <button class="chip" data-category="숲세권/대단지">🌳 숲세권 · 대단지</button>
+        </div>
+      </section>
+
+      <!-- Active View Header Banner -->
+      <div class="view-status-banner hidden" id="viewStatusBanner">
+        <div class="view-status-info">
+          <h2 id="viewStatusTitle">관심 단지 보드</h2>
+          <p id="viewStatusDesc">북마크한 서울 아파트 단지 및 임장 노트 목록입니다.</p>
+        </div>
+        <button class="btn-secondary" id="backToAllFeedBtn">전체 피드로 돌아가기</button>
+      </div>
+
+      <!-- Loading Skeleton -->
+      <div class="feed-skeleton" id="feedSkeleton">
+        <div class="skeleton-card">
+          <div class="sk-header"><div class="sk-avatar"></div><div class="sk-lines"><div class="sk-line w40"></div><div class="sk-line w25"></div></div></div>
+          <div class="sk-image"></div>
+          <div class="sk-footer"><div class="sk-line w70"></div><div class="sk-line w90"></div></div>
+        </div>
+      </div>
+
+      <!-- Main Feed Stream (Instagram Single-Column Cards) -->
+      <section class="feed-stream" id="feedStream"></section>
+
+      <!-- Explore Grid View (Instagram 3-Column Grid) -->
+      <section class="explore-grid hidden" id="exploreGrid"></section>
+
+      <!-- Real Estate Platforms Directory View -->
+      <section class="sites-directory hidden" id="sitesDirectory"></section>
+
+      <!-- Infinite Scroll Sentinel -->
+      <div class="infinite-scroll-trigger" id="infiniteScrollTrigger">
+        <button class="load-more-random-btn" id="loadMoreRandomBtn">
+          <span>🎲 새로운 서울 랜덤 아파트 피드 더 불러오기</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- Right Sidebar (Random Apt Spotlight, Region Quick Filter, Live News, Platforms) -->
+    <aside class="right-sidebar">
+      <!-- Random Seoul Apartment Spotlight Card -->
+      <div class="spotlight-card" id="spotlightAptCard">
+        <div class="spotlight-top">
+          <span class="spotlight-tag">🎯 오늘의 서울 랜덤 단지 추천</span>
+          <button class="mini-refresh-btn" id="rerollSpotlightBtn" title="다른 서울 아파트 단지 랜덤 추천">다시 뽑기 ↻</button>
+        </div>
+        <div class="spotlight-body" id="spotlightBody">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Seoul 7 Regions Quick Filter & Status -->
+      <div class="rss-status-card">
+        <div class="rss-status-header">
+          <div class="live-dot-wrap">
+            <span class="live-dot"></span>
+            <h3>서울 권역별 아파트 큐레이션</h3>
+          </div>
+          <button class="rss-refresh-btn" id="resetRegionFilterBtn" title="전체 권역 보기">전체보기</button>
+        </div>
+        <ul class="rss-source-list" id="regionList">
+          <!-- Populated dynamically -->
+        </ul>
+      </div>
+
+      <!-- Live Real Estate News Box -->
+      <div class="mini-sites-card">
+        <div class="mini-sites-header">
+          <h3>📰 실시간 서울 아파트 뉴스</h3>
+          <button class="text-link-btn" id="refreshNewsBtn">새로고침</button>
+        </div>
+        <div class="news-brief-list" id="newsBriefList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Quick Real Estate Platforms Mini List -->
+      <div class="mini-sites-card">
+        <div class="mini-sites-header">
+          <h3>실거래 · 호가 · 학군 필수 사이트</h3>
+          <button class="text-link-btn" id="viewAllSitesBtn">모두 보기</button>
+        </div>
+        <div class="mini-sites-list" id="miniSitesList">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <footer class="right-footer">
+        <p>단축키: <kbd>R</kbd> 피드 셔플 · <kbd>S</kbd> 랜덤 단지 룰렛 · <kbd>G</kbd> 그리드 전환</p>
+        <p class="copyright">© 2026 RANDOM.APT SEOUL · Curated Seoul Apartment Feed</p>
+      </footer>
+    </aside>
+  </div>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <button class="mob-nav-btn active" data-nav="feed">🏢<span>단지피드</span></button>
+    <button class="mob-nav-btn" data-nav="explore">🔍<span>바둑판</span></button>
+    <button class="mob-nav-btn" id="mobBottomRouletteBtn">🎯<span>단지뽑기</span></button>
+    <button class="mob-nav-btn" data-nav="sites">🌐<span>플랫폼</span></button>
+    <button class="mob-nav-btn" data-nav="saved">🔖<span>관심단지</span></button>
+  </nav>
+
+  <!-- 1. Apartment Detail & Field Note Modal (Instagram Desktop Split View) -->
+  <div class="modal-backdrop hidden" id="postDetailModal">
+    <button class="modal-close-btn" id="closeDetailModalBtn" aria-label="닫기">✕</button>
+    <div class="post-modal-dialog" role="dialog" aria-modal="true">
+      <div class="post-modal-media" id="modalMediaContainer">
+        <!-- Carousel injected here -->
+      </div>
+      <div class="post-modal-info" id="modalInfoContainer">
+        <!-- Detailed apartment specs & memo injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Random Seoul Apartment Roulette Modal -->
+  <div class="modal-backdrop hidden" id="aptRouletteModal">
+    <button class="modal-close-btn" id="closeRouletteModalBtn" aria-label="닫기">✕</button>
+    <div class="roulette-modal-dialog" role="dialog" aria-modal="true">
+      <div class="roulette-header">
+        <span class="roulette-badge">SEOUL APARTMENT ROULETTE</span>
+        <h2>🎯 오늘의 서울 랜덤 아파트 · 임장지 뽑기</h2>
+        <p>서울 25개 자치구 주요 대단지 중 하나를 무작위로 추천하고 시세·학군·지도를 연결합니다.</p>
+        <div class="roulette-region-selector" id="rouletteRegionSelector">
+          <button class="r-chip active" data-rregion="all">서울 전체</button>
+          <button class="r-chip" data-rregion="gangnam3">강남·서초·송파</button>
+          <button class="r-chip" data-rregion="mayongseong">용산·성동·마포</button>
+          <button class="r-chip" data-rregion="yeouido_mokdong">여의도·목동·마곡</button>
+          <button class="r-chip" data-rregion="gangdong_gwangjin">강동·광진·동작</button>
+          <button class="r-chip" data-rregion="central">종로·중구·서대문</button>
+          <button class="r-chip" data-rregion="northeast">노원·성북·동대문</button>
+        </div>
+      </div>
+      <div class="roulette-stage" id="rouletteStage">
+        <!-- Populated dynamically -->
+      </div>
+      <div class="roulette-actions">
+        <button class="btn-roulette-spin" id="spinAgainBtn">🎲 다른 서울 아파트 뽑기</button>
+        <a class="btn-roulette-visit" id="rouletteNaverLandLink" href="#" target="_blank" rel="noopener noreferrer">네이버 부동산 시세·매물 보기 ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Add Custom Seoul Apartment Modal -->
+  <div class="modal-backdrop hidden" id="addCustomModal">
+    <button class="modal-close-btn" id="closeAddModalBtn" aria-label="닫기">✕</button>
+    <div class="custom-modal-dialog" role="dialog" aria-modal="true">
+      <h2>➕ 나만의 서울 관심 단지 / 임장 아파트 추가</h2>
+      <p class="modal-sub">관심 있는 서울 아파트나 다녀온 임장 단지를 내 피드에 등록하고 관리하세요.</p>
+      <form id="addCustomForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customName">아파트 단지명 *</label>
+            <input type="text" id="customName" required placeholder="예: 반포 자이 (Banpo Xi)" />
+          </div>
+          <div class="form-group">
+            <label for="customDistrict">자치구 / 법정동 *</label>
+            <input type="text" id="customDistrict" required placeholder="예: 서초구 반포동" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customRegion">서울 권역 분류</label>
+            <select id="customRegion">
+              <option value="gangnam3">강남·서초·송파 (강남3구)</option>
+              <option value="mayongseong">용산·성동·마포 (마용성)</option>
+              <option value="yeouido_mokdong">영등포·양천·강서 (여의도·목동·마곡)</option>
+              <option value="gangdong_gwangjin">강동·광진·동작</option>
+              <option value="central">종로·중구·서대문 (도심권)</option>
+              <option value="northeast">노원·성북·동대문 (동북권)</option>
+              <option value="northwest_south">은평·관악·구로·기타</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="customCategory">단지 테마 카테고리</label>
+            <select id="customCategory">
+              <option value="한강뷰/랜드마크">🌊 한강뷰/랜드마크</option>
+              <option value="하이엔드/신축">✨ 하이엔드/신축</option>
+              <option value="재건축/정비사업">🏗️ 재건축/정비사업</option>
+              <option value="초역세권/직주근접">🚇 초역세권/직주근접</option>
+              <option value="명문학군">📚 명문학군</option>
+              <option value="숲세권/대단지">🌳 숲세권/대단지</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customPrice">84㎡ 매매 시세 / 실거래 참고</label>
+            <input type="text" id="customPrice" placeholder="예: 35억 ~ 38억" />
+          </div>
+          <div class="form-group">
+            <label for="customSpecs">세대수 / 준공연도</label>
+            <input type="text" id="customSpecs" placeholder="예: 3410세대 · 2009년" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customSubway">인접 지하철역</label>
+            <input type="text" id="customSubway" placeholder="예: 7호선 반포역 · 3/7/9호선 고속터미널역" />
+          </div>
+          <div class="form-group">
+            <label for="customSchool">배정 초등학교 / 학군</label>
+            <input type="text" id="customSchool" placeholder="예: 원촌초 · 원촌중" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="customImage">대표 이미지 URL (비워두면 아파트 사진 자동 지정)</label>
+          <input type="url" id="customImage" placeholder="https://images.unsplash.com/..." />
+        </div>
+        <div class="form-group">
+          <label for="customSummary">입지 특징 및 내 임장 메모</label>
+          <textarea id="customSummary" rows="3" placeholder="동간 거리, 조경, 역까지 도보 시간, 주변 상권 등 임장 기록을 남겨보세요."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" id="cancelAddModalBtn">취소</button>
+          <button type="submit" class="btn-primary">내 단지 피드에 등록하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
